@@ -30,6 +30,13 @@ try:
 except ImportError:
     HAS_AI_SUPPORT = False
 
+# Advanced codecs imports
+try:
+    from .core.advanced_encoders import AdvancedVideoEncoder, HDRProcessor
+    HAS_ADVANCED_CODECS = True
+except ImportError:
+    HAS_ADVANCED_CODECS = False
+
 __version__ = "0.3.0"
 __all__ = [
     "VideoProcessor",
@@ -41,6 +48,8 @@ __all__ = [
     "EncodingError",
     "FFmpegError",
     "HAS_360_SUPPORT",
+    "HAS_AI_SUPPORT",
+    "HAS_ADVANCED_CODECS",
 ]
 
 # Add 360° exports if available
@@ -59,4 +68,11 @@ if HAS_AI_SUPPORT:
         "VideoContentAnalyzer",
         "ContentAnalysis",
         "SceneAnalysis",
+    ])
+
+# Add advanced codec exports if available
+if HAS_ADVANCED_CODECS:
+    __all__.extend([
+        "AdvancedVideoEncoder",
+        "HDRProcessor",
     ])

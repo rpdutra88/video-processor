@@ -28,7 +28,7 @@ class ProcessorConfig(BaseModel):
     base_path: Path = Field(default=Path("/tmp/videos"))
 
     # Encoding settings
-    output_formats: list[Literal["mp4", "webm", "ogv"]] = Field(default=["mp4"])
+    output_formats: list[Literal["mp4", "webm", "ogv", "av1_mp4", "av1_webm", "hevc"]] = Field(default=["mp4"])
     quality_preset: Literal["low", "medium", "high", "ultra"] = "medium"
 
     # FFmpeg settings
@@ -44,6 +44,14 @@ class ProcessorConfig(BaseModel):
 
     # Custom FFmpeg options
     custom_ffmpeg_options: dict[str, str] = Field(default_factory=dict)
+
+    # Advanced codec settings
+    enable_av1_encoding: bool = Field(default=False)
+    enable_hevc_encoding: bool = Field(default=False) 
+    enable_hardware_acceleration: bool = Field(default=True)
+    av1_cpu_used: int = Field(default=6, ge=0, le=8)  # AV1 speed vs quality tradeoff
+    prefer_two_pass_av1: bool = Field(default=True)
+    enable_hdr_processing: bool = Field(default=False)
 
     # File permissions
     file_permissions: int = 0o644

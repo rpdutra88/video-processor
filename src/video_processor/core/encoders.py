@@ -72,6 +72,12 @@ class VideoEncoder:
             return self._encode_webm(input_path, output_dir, video_id)
         elif format_name == "ogv":
             return self._encode_ogv(input_path, output_dir, video_id)
+        elif format_name == "av1_mp4":
+            return self._encode_av1_mp4(input_path, output_dir, video_id)
+        elif format_name == "av1_webm":
+            return self._encode_av1_webm(input_path, output_dir, video_id)
+        elif format_name == "hevc":
+            return self._encode_hevc_mp4(input_path, output_dir, video_id)
         else:
             raise EncodingError(f"Unsupported format: {format_name}")
 
@@ -263,3 +269,24 @@ class VideoEncoder:
             raise EncodingError("OGV encoding failed - output file not created")
 
         return output_file
+
+    def _encode_av1_mp4(self, input_path: Path, output_dir: Path, video_id: str) -> Path:
+        """Encode video to AV1 in MP4 container."""
+        from .advanced_encoders import AdvancedVideoEncoder
+        
+        advanced_encoder = AdvancedVideoEncoder(self.config)
+        return advanced_encoder.encode_av1(input_path, output_dir, video_id, container="mp4")
+
+    def _encode_av1_webm(self, input_path: Path, output_dir: Path, video_id: str) -> Path:
+        """Encode video to AV1 in WebM container."""
+        from .advanced_encoders import AdvancedVideoEncoder
+        
+        advanced_encoder = AdvancedVideoEncoder(self.config)
+        return advanced_encoder.encode_av1(input_path, output_dir, video_id, container="webm")
+
+    def _encode_hevc_mp4(self, input_path: Path, output_dir: Path, video_id: str) -> Path:
+        """Encode video to HEVC/H.265 in MP4 container."""
+        from .advanced_encoders import AdvancedVideoEncoder
+        
+        advanced_encoder = AdvancedVideoEncoder(self.config)
+        return advanced_encoder.encode_hevc(input_path, output_dir, video_id)
