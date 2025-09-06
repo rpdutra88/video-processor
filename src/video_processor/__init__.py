@@ -1,13 +1,19 @@
 """
-Video Processor - Standalone video processing pipeline.
+Video Processor - AI-Enhanced Professional Video Processing Library.
 
-A professional video processing library extracted from the demostar system,
-featuring multiple format encoding, thumbnail generation, and background processing.
+Features comprehensive video processing with 360° support, AI-powered content analysis,
+multiple format encoding, intelligent thumbnail generation, and background processing.
 """
 
 from .config import ProcessorConfig
-from .core.processor import VideoProcessor
-from .exceptions import EncodingError, StorageError, VideoProcessorError
+from .core.processor import VideoProcessor, VideoProcessingResult
+from .exceptions import (
+    EncodingError,
+    FFmpegError, 
+    StorageError,
+    ValidationError,
+    VideoProcessorError,
+)
 
 # Optional 360° imports
 try:
@@ -16,13 +22,24 @@ try:
 except ImportError:
     HAS_360_SUPPORT = False
 
-__version__ = "0.1.0"
+# Optional AI imports  
+try:
+    from .ai import ContentAnalysis, SceneAnalysis, VideoContentAnalyzer
+    from .core.enhanced_processor import EnhancedVideoProcessor, EnhancedVideoProcessingResult
+    HAS_AI_SUPPORT = True
+except ImportError:
+    HAS_AI_SUPPORT = False
+
+__version__ = "0.3.0"
 __all__ = [
     "VideoProcessor",
-    "ProcessorConfig",
+    "VideoProcessingResult",
+    "ProcessorConfig", 
     "VideoProcessorError",
-    "EncodingError",
+    "ValidationError",
     "StorageError",
+    "EncodingError",
+    "FFmpegError",
     "HAS_360_SUPPORT",
 ]
 
@@ -30,6 +47,16 @@ __all__ = [
 if HAS_360_SUPPORT:
     __all__.extend([
         "Video360Detection",
-        "Video360Utils",
+        "Video360Utils", 
         "Thumbnail360Generator",
+    ])
+
+# Add AI exports if available
+if HAS_AI_SUPPORT:
+    __all__.extend([
+        "EnhancedVideoProcessor",
+        "EnhancedVideoProcessingResult",
+        "VideoContentAnalyzer",
+        "ContentAnalysis",
+        "SceneAnalysis",
     ])

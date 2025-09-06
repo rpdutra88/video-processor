@@ -47,6 +47,21 @@ spatial-audio = [
     "soundfile>=0.11.0",        # Multi-channel audio I/O
 ]
 
+# AI-powered video analysis
+ai-analysis = [
+    "opencv-python>=4.5.0",     # Advanced computer vision (shared with video-360)
+    "numpy>=1.21.0",            # Mathematical operations (shared with video-360) 
+    "scikit-learn>=1.0.0",      # Machine learning utilities
+    "pillow>=9.0.0",            # Image processing utilities
+]
+
+# Combined advanced features (360° + AI + spatial audio)
+advanced = [
+    "video-processor[video-360]",
+    "video-processor[ai-analysis]", 
+    "video-processor[spatial-audio]",
+]
+
 # Enhanced metadata extraction for 360° videos
 metadata-360 = [
     "exifread>=3.0.0",          # 360° metadata parsing
